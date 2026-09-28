@@ -218,9 +218,34 @@ namespace BoilerController.Service
             return blockMessage;
         }
 
-        internal void SimulateBoilerErrorAsync()
+        internal async Task<string> SimulateBoilerErrorAsync()
         {
+            await _semaphoreSlim.WaitAsync();
+            try
+            {
+                bool flag = false;
+                lock (_obj)
+                {
+                    if (_phase == Phases.operational && _state == SystemState.Running)
+                    {
+                        flag = true;
+                        _resumeLog = null;
+                        _state = SystemState.Error; //Just resetting the state alone. The phase will help to identify in which phase the error occured. So, didn't change that.
+                    }
+                }
+                if (!flag)
+                {
+                    return await BlockAsync("ERROR BLOCKED", "Errors can only be raised in the operational state.");
+                }
 
+                const string message = "Error is simulated in operational state. To proceed go forward with the reset.";
+                await LoggingAsync("ERROR RAISED", message);
+                return message;
+            }
+            finally
+            {
+                _semaphoreSlim?.Release();
+            }
         }
 
         internal void StopBoilerAsync()
