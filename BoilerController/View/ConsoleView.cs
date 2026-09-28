@@ -1,4 +1,5 @@
-﻿using BoilerController.Service;
+﻿using BoilerController.Model;
+using BoilerController.Service;
 
 namespace BoilerController.View
 {
@@ -64,8 +65,10 @@ namespace BoilerController.View
 
         private void Render()
         {
+            BoilerModel model = _service.BoilerState();
             int width = Math.Max(20, Console.WindowWidth - 1);
             Console.SetCursorPosition(0, 0);
+
             Console.WriteLine($@"=========================================
 MAIN MENU
 =========================================
@@ -109,6 +112,11 @@ MAIN MENU
         {
             while (true)
             {
+                if (!Console.KeyAvailable)
+                {
+                    await Task.Delay(50);
+                    continue;
+                }
                 ConsoleKey key = Console.ReadKey(intercept: true).Key;
                 if (_confirmMessage)
                 {

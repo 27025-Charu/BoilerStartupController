@@ -87,8 +87,14 @@ namespace BoilerController.Service
                 {
                     message = "Started the sequence and begun from Phase 1 - Pre-Purge";
                 }
-                await LoggingAsync(resumed ? "RESUME" : "START", message);
-
+                if (resumed)
+                {
+                    await LoggingAsync("RESUME", message);
+                }
+                else
+                {
+                    await LoggingAsync("START", message);
+                }
                 _runningTask = RunAsync(phase, end, token);
                 return message;
             }

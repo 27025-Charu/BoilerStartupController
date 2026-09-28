@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BoilerController")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cba803a085b7d3b25803b055c39e65d57c5009d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+969afca2a772de2eea31d8a895b141e2044254bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("BoilerController")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BoilerController")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
