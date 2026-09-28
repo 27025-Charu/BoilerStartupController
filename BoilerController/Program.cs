@@ -15,8 +15,8 @@ namespace BoilerController
             Console.WriteLine(@"====================================
 WELCOME TO BOILER STARTUP CONTROLLER
 ====================================");
-            service.RunAsync();
-            view.ExecuteAsync();
+            await service.RunAsync();
+            await view.ExecuteAsync();
         }
     }
 }

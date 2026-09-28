@@ -11,7 +11,7 @@ namespace BoilerController.View
             this._service = service;
         }
 
-        internal void ExecuteAsync()
+        internal async Task ExecuteAsync()
         {
             Console.WriteLine($@"=========================================
 MAIN MENU
@@ -30,7 +30,7 @@ MAIN MENU
                 switch (key.Key)
                 {
                     case ConsoleKey.A:
-                        _service.StartBoilerAsync();
+                        await _service.StartBoilerAsync();
                         continue;
                     case ConsoleKey.B:
                         _service.StopBoilerAsync();

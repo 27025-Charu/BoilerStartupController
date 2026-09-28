@@ -24,7 +24,7 @@
         {
             string[] lines =
             {
-                DateTime.UtcNow.ToString("dd-mm-yyyy HH:mm:ss"),evt,eventData
+                DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm:ss"),evt,eventData
             };
             string line = string.Join(",", lines.Select(line => line));
 

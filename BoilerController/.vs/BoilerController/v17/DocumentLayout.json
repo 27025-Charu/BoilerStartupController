@@ -3,44 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\view\\consoleview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:view\\consoleview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\service\\boilerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:service\\boilerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\service\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:service\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\view\\consoleview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:view\\consoleview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\model\\boilermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:model\\boilermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\model\\systemstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:model\\systemstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\model\\switch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:model\\switch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\model\\resumelog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:model\\resumelog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\model\\phases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:model\\phases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\model\\resumelog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:model\\resumelog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\repository\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:repository\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|c:\\users\\charu.subbian\\viscom_ws\\training\\assessment-2\\boilercontroller\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DAE73E9-F1D9-49D3-BEE4-DDBA39FE0D5B}|BoilerController.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,132 +46,93 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "BoilerModel.cs",
               "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\BoilerModel.cs",
               "RelativeDocumentMoniker": "Model\\BoilerModel.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\BoilerModel.cs*",
-              "RelativeToolTip": "Model\\BoilerModel.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\BoilerModel.cs",
+              "RelativeToolTip": "Model\\BoilerModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T07:55:41.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ResumeLog.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\ResumeLog.cs",
-              "RelativeDocumentMoniker": "Model\\ResumeLog.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\ResumeLog.cs",
-              "RelativeToolTip": "Model\\ResumeLog.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T07:49:51.875Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Phases.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\Phases.cs",
-              "RelativeDocumentMoniker": "Model\\Phases.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\Phases.cs",
-              "RelativeToolTip": "Model\\Phases.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T07:48:24.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Switch.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\Switch.cs",
-              "RelativeDocumentMoniker": "Model\\Switch.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\Switch.cs",
-              "RelativeToolTip": "Model\\Switch.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T07:46:28.117Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SystemState.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\SystemState.cs",
-              "RelativeDocumentMoniker": "Model\\SystemState.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\SystemState.cs",
-              "RelativeToolTip": "Model\\SystemState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T07:45:31.916Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ConsoleView.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\View\\ConsoleView.cs",
-              "RelativeDocumentMoniker": "View\\ConsoleView.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\View\\ConsoleView.cs",
-              "RelativeToolTip": "View\\ConsoleView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:27:37.182Z",
+              "WhenOpened": "2026-09-28T09:15:08.144Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAmAAAAAAAAAA==",
+              "Title": "ResumeLog.cs",
+              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\ResumeLog.cs",
+              "RelativeDocumentMoniker": "Model\\ResumeLog.cs",
+              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\ResumeLog.cs",
+              "RelativeToolTip": "Model\\ResumeLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:17:35.631Z",
+              "WhenOpened": "2026-09-28T08:54:28.797Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Notification.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Service\\Notification.cs",
-              "RelativeDocumentMoniker": "Service\\Notification.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Service\\Notification.cs*",
-              "RelativeToolTip": "Service\\Notification.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Phases.cs",
+              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\Phases.cs",
+              "RelativeDocumentMoniker": "Model\\Phases.cs",
+              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Model\\Phases.cs",
+              "RelativeToolTip": "Model\\Phases.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:55:04.619Z",
+              "WhenOpened": "2026-09-28T08:54:27.576Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BoilerService.cs",
-              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Service\\BoilerService.cs",
-              "RelativeDocumentMoniker": "Service\\BoilerService.cs",
-              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Service\\BoilerService.cs",
-              "RelativeToolTip": "Service\\BoilerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:28:09.239Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "Logger.cs",
               "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Repository\\Logger.cs",
               "RelativeDocumentMoniker": "Repository\\Logger.cs",
               "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Repository\\Logger.cs",
               "RelativeToolTip": "Repository\\Logger.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwCEAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:27:19.442Z",
+              "WhenOpened": "2026-09-28T08:42:05.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ConsoleView.cs",
+              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\View\\ConsoleView.cs",
+              "RelativeDocumentMoniker": "View\\ConsoleView.cs",
+              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\View\\ConsoleView.cs",
+              "RelativeToolTip": "View\\ConsoleView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T08:39:45.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T08:37:22.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BoilerService.cs",
+              "DocumentMoniker": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Service\\BoilerService.cs",
+              "RelativeDocumentMoniker": "Service\\BoilerService.cs",
+              "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Service\\BoilerService.cs",
+              "RelativeToolTip": "Service\\BoilerService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA1wCcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T06:28:09.239Z",
               "EditorCaption": ""
             }
           ]
