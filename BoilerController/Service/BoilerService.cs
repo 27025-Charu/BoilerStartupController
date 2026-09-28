@@ -3,6 +3,9 @@ using BoilerController.Repository;
 
 namespace BoilerController.Service
 {
+    /// <summary>
+    /// Bpiler service has various methods for starting and stopping the boiler, Reseting the lockout, Simulating boiler error, toggling between open/close, viewing the logs, exiting the application.
+    /// </summary>
     internal class BoilerService
     {
         private readonly Logger logger;
@@ -18,15 +21,28 @@ namespace BoilerController.Service
         public static readonly TimeSpan Duration = TimeSpan.FromSeconds(10);
         private Task _runningTask = Task.CompletedTask;
 
+        /// <summary>
+        /// Boiler service's constructor that takes the logger and assignes the private field.
+        /// </summary>
+        /// <param name="logger"></param>
         public BoilerService(Logger logger)
         {
             this.logger = logger;
         }
+
+        /// <summary>
+        /// Starts the application by logging this text.
+        /// </summary>
+        /// <returns>Returns the logging.</returns>
         public Task RunAsync()
         {
             return LoggingAsync("START", "Boilder controller initialized. [State: Lockout, Switch: Open]");
         }
 
+        /// <summary>
+        /// Starting the boiler when the switch is closed and the system state is in ready state.
+        /// </summary>
+        /// <returns>Returns the text stating the current operation status.</returns>
         internal async Task<string> StartBoilerAsync()
         {
             await _semaphoreSlim.WaitAsync();
@@ -104,6 +120,13 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Helper method for the start boiler method
+        /// </summary>
+        /// <param name="phase">Phase specified</param>
+        /// <param name="end">End time. </param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
         private async Task RunAsync(Phases phase, DateTime end, CancellationToken token)
         {
             try
@@ -161,6 +184,12 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Delay method for delaying and moving from one phase to the next.
+        /// </summary>
+        /// <param name="endTime">Phase's end time</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         private async Task DelayAsync(DateTime endTime, CancellationToken token)
         {
             TimeSpan remaining = endTime - DateTime.UtcNow;
@@ -170,6 +199,10 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Reseting the lockout to ready state.
+        /// </summary>
+        /// <returns>Message that states the current state.</returns>
         internal async Task<string> ResetLockoutAsync()
         {
             await _semaphoreSlim.WaitAsync();
@@ -218,12 +251,22 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// The operation's that is blocked due to some reason is added in the blockmessage and displayed to the user.
+        /// </summary>
+        /// <param name="v">Phase</param>
+        /// <param name="blockMessage">Message due to block</param>
+        /// <returns></returns>
         private async Task<string> BlockAsync(string v, string blockMessage)
         {
             await LoggingAsync(v, blockMessage);
             return blockMessage;
         }
 
+        /// <summary>
+        /// Simulating the boiler error and then continuing the boiler.
+        /// </summary>
+        /// <returns>Message that states the current state.</returns>
         internal async Task<string> SimulateBoilerErrorAsync()
         {
             await _semaphoreSlim.WaitAsync();
@@ -256,6 +299,10 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Stopping the boiler in between the running process and then resuming it using the start boiler method call.
+        /// </summary>
+        /// <returns>Returns the message that states the current state of the operation.</returns>
         internal async Task<string> StopBoilerAsync()
         {
             await _semaphoreSlim.WaitAsync();
@@ -303,6 +350,10 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Toggling the switch between open and close.
+        /// </summary>
+        /// <returns>Returns the message that states the current state of the operation.</returns>
         internal async Task<string> ToggleRunInterlockAsync()
         {
             await _semaphoreSlim.WaitAsync();
@@ -365,6 +416,11 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Cancelling the cancellation token.
+        /// </summary>
+        /// <param name="cts">Token</param>
+        /// <returns>cancelled completed task as result.</returns>
         private async Task CancelTokenSource(CancellationTokenSource cts)
         {
             if (cts == null)
@@ -374,11 +430,18 @@ namespace BoilerController.Service
             cts.Cancel();
         }
 
+        /// <summary>
+        /// Retrieving the event log data.
+        /// </summary>
+        /// <returns>Viewing the event log data from the logged file.</returns>
         internal List<string> ViewEventLogAsync()
         {
             return logger.ReadAll();
         }
 
+        /// <summary>
+        /// Is running tells us that the system is in the running state or not.
+        /// </summary>
         public bool IsRunning
         {
             get
@@ -390,6 +453,10 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Disposing once the exit is called or application is exiting.
+        /// </summary>
+        /// <returns>Returns the task whether this method is completed or not.</returns>
         internal async Task DisposeAsync()
         {
             await _semaphoreSlim.WaitAsync();
@@ -410,6 +477,12 @@ namespace BoilerController.Service
             }
         }
 
+        /// <summary>
+        /// Logging every events that happens in the application.
+        /// </summary>
+        /// <param name="evtFormat">The method that is being processed.</param>
+        /// <param name="message">Error or success message</param>
+        /// <returns>returns a task.</returns>
         private async Task LoggingAsync(string evtFormat, string message)
         {
             await logger.WriteAsync(evtFormat, message);

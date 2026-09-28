@@ -49,3 +49,15 @@ TimeStamp,Event,Event Data
 28-09-2026 13:07:12,ERROR BLOCKED,Errors can only be raised in the operational state.
 28-09-2026 13:07:37,START,Boilder controller initialized. [State: Lockout, Switch: Open]
 28-09-2026 13:07:40,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
+28-09-2026 13:23:13,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 13:23:15,TOGGLE SWITCH,Switch is in closed state. Boiler is in lockout, reset to Ready state.
+28-09-2026 13:23:16,RESET,Reset is set to ready
+28-09-2026 13:23:17,START,Started the sequence and begun from Phase 1 - Pre-Purge
+28-09-2026 13:23:17,PHASE_START,prepurge started, ends 13:23:27 UTC
+28-09-2026 13:23:27,PHASE_COMPLETE,Phase - prepurge completed.
+28-09-2026 13:23:27,PHASE_START,ignition started, ends 13:23:37 UTC
+28-09-2026 13:23:28,RESET,Reset is set to ready
+28-09-2026 13:23:37,PHASE_COMPLETE,Phase - ignition completed.
+28-09-2026 13:23:37,START,Started the sequence and begun from Phase 1 - Pre-Purge
+28-09-2026 13:23:37,PHASE_START,prepurge started, ends 13:23:47 UTC
+28-09-2026 13:23:48,START,Boilder controller initialized. [State: Lockout, Switch: Open]

@@ -4,6 +4,9 @@ using BoilerController.View;
 
 namespace BoilerController
 {
+    /// <summary>
+    /// Entry point of the application
+    /// </summary>
     internal class Program
     {
         private static async Task Main(string[] args)

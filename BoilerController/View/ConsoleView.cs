@@ -1,8 +1,10 @@
-﻿using BoilerController.Model;
-using BoilerController.Service;
+﻿using BoilerController.Service;
 
 namespace BoilerController.View
 {
+    /// <summary>
+    /// Console view is the view layer of the application that interacts with the user.
+    /// </summary>
     internal class ConsoleView
     {
         private const int MAXCOUNT = 10;
@@ -11,12 +13,21 @@ namespace BoilerController.View
         private readonly object _eventsLock = new();
         private volatile bool _confirmMessage;
         private volatile string _message = string.Empty;
+
+        /// <summary>
+        /// Constructor initializes both the service and subscribe the notifier which is present in the service layer.
+        /// </summary>
+        /// <param name="service"></param>
         public ConsoleView(BoilerService service)
         {
             this._service = service;
             service.Notify += OnEvent;
         }
 
+        /// <summary>
+        /// This is the subscriber to the Notify event.
+        /// </summary>
+        /// <param name="line">Line is the logging text that needs to be displayed to the user.</param>
         private void OnEvent(string line)
         {
             lock (_eventsLock)
@@ -29,6 +40,10 @@ namespace BoilerController.View
             }
         }
 
+        /// <summary>
+        /// Called by the program.cs to initiate and start the user console layer.
+        /// </summary>
+        /// <returns>This returns the user input loop that is iterated.</returns>
         internal async Task ExecuteAsync()
         {
             Console.Clear();
@@ -48,6 +63,11 @@ namespace BoilerController.View
             }
         }
 
+        /// <summary>
+        /// Rendering the page to the user.
+        /// </summary>
+        /// <param name="token">Cancellation token</param>
+        /// <returns>Rendering the console.</returns>
         private async Task RenderingConsole(CancellationToken token)
         {
             try
@@ -63,9 +83,11 @@ namespace BoilerController.View
             }
         }
 
+        /// <summary>
+        /// Rendering to the user.
+        /// </summary>
         private void Render()
         {
-            BoilerModel model = _service.BoilerState();
             int width = Math.Max(20, Console.WindowWidth - 1);
             Console.SetCursorPosition(0, 0);
 
@@ -94,7 +116,12 @@ MAIN MENU
             }
         }
 
-        private void WriteLine(string text, int width, ConsoleColor? color = null)
+        /// <summary>
+        /// Neat aligning of the line.
+        /// </summary>
+        /// <param name="text">text that needs to be displayed</param>
+        /// <param name="width">the console window width</param>
+        private void WriteLine(string text, int width)
         {
             string padded;
             if (text.Length > width)
@@ -108,6 +135,10 @@ MAIN MENU
             Console.WriteLine(padded);
         }
 
+        /// <summary>
+        /// Method that helps the user to provide the input.
+        /// </summary>
+        /// <returns>Returns the task.</returns>
         private async Task UserInputAsync()
         {
             while (true)
