@@ -227,10 +227,6 @@ namespace BoilerController.Service
         {
         }
 
-        internal void ToggleRunInterlock()
-        {
-        }
-
         internal void ToggleRunInterlockAsync()
         {
 
@@ -241,9 +237,24 @@ namespace BoilerController.Service
             return logger.ReadAll();
         }
 
-        internal void DisposeAsync()
+        internal async Task DisposeAsync()
         {
-
+            await _semaphoreSlim.WaitAsync();
+            try
+            {
+                lock (_obj)
+                {
+                    if (_state == SystemState.Running)
+                    {
+                        _state = SystemState.Stopped;
+                    }
+                }
+                await LoggingAsync("EXIT", "Boiler Controller exiting");
+            }
+            finally
+            {
+                _semaphoreSlim.Release();
+            }
         }
 
         private async Task LoggingAsync(string evtFormat, string message)
