@@ -3,6 +3,7 @@
     internal class Logger
     {
         private string _filePath;
+        private SemaphoreSlim _semaphoreLock = new SemaphoreSlim(1, 1);
         private static readonly string[] Header = { "TimeStamp", "Event", "Event Data" };
         public Logger(string fileName)
         {
@@ -12,10 +13,6 @@
                 File.WriteAllText(this._filePath, string.Join(",", Header) + Environment.NewLine);
             }
         }
-        public void Add(string message)
-        {
-            File.AppendAllText(this._filePath, message + Environment.NewLine);
-        }
 
         public List<string> ReadAll()
         {
@@ -23,11 +20,23 @@
             return lines.ToList();
         }
 
-        private void WriteAll()
+        public async Task WriteAsync(string evt, string eventData)
         {
-            var lines = new List<string> { string.Join(",", Header) };
-            File.WriteAllLines(this._filePath, lines);
-        }
+            string[] lines =
+            {
+                DateTime.UtcNow.ToString("dd-mm-yyyy HH:mm:ss"),evt,eventData
+            };
+            string line = string.Join(",", lines.Select(line => line));
 
+            await _semaphoreLock.WaitAsync();
+            try
+            {
+                await File.AppendAllTextAsync(_filePath, line + Environment.NewLine);
+            }
+            finally
+            {
+                _semaphoreLock.Release();
+            }
+        }
     }
 }
