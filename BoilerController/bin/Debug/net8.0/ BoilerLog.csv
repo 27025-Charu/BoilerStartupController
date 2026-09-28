@@ -71,3 +71,13 @@ TimeStamp,Event,Event Data
 28-09-2026 13:51:53,PHASE_COMPLETE,Phase - prepurge completed.
 28-09-2026 13:51:53,PHASE_START,ignition started, ends 13:52:03 UTC
 28-09-2026 13:52:02,TOGGLE SWITCH,Switch is opened. The phase when the toggle happened was ignition. Close the switch and reset to ready state.
+28-09-2026 13:54:16,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 13:54:19,TOGGLE SWITCH,Switch is in closed state. Boiler is in lockout, reset to Ready state.
+28-09-2026 13:54:21,RESET,Reset is set to ready
+28-09-2026 13:54:22,START,Started the sequence and begun from Phase 1 - Pre-Purge
+28-09-2026 13:54:22,PHASE_START,prepurge started, ends 13:54:32 UTC
+28-09-2026 13:54:32,PHASE_COMPLETE,Phase - prepurge completed.
+28-09-2026 13:54:32,PHASE_START,ignition started, ends 13:54:42 UTC
+28-09-2026 13:55:10,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 13:55:15,TOGGLE SWITCH,Switch is in closed state. Boiler is in lockout, reset to Ready state.
+28-09-2026 13:55:16,RESET,Reset is set to ready
