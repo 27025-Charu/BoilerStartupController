@@ -13,7 +13,7 @@ namespace BoilerController.Service
         private Phases _phase = Phases.none;
         private DateTime _TimeEndPhase;
         public event Action<string>? Notify;
-        ResumeLog _resumeLog = new ResumeLog();
+        ResumeLog _resumeLog;
         private CancellationTokenSource cts;
         public static readonly TimeSpan Duration = TimeSpan.FromSeconds(10);
         private Task _runningTask = Task.CompletedTask;
@@ -22,21 +22,21 @@ namespace BoilerController.Service
         {
             this.logger = logger;
         }
-        internal Task RunAsync()
+        public Task RunAsync()
         {
             return LoggingAsync("START", "Boilder controller initialized. [State: Lockout, Switch: Open]");
         }
 
         internal async Task<string> StartBoilerAsync()
         {
-            TimeSpan remaining = Duration;
-            Phases phase = Phases.prepurge;
-            bool resumed = false;
-            DateTime end = default;
-            CancellationToken token = default;
             await _semaphoreSlim.WaitAsync();
             try
             {
+                TimeSpan remaining = Duration;
+                Phases phase = Phases.prepurge;
+                bool resumed = false;
+                DateTime end = default;
+                CancellationToken token = default;
                 string block = string.Empty;
                 lock (_obj)
                 {
@@ -116,7 +116,7 @@ namespace BoilerController.Service
 
                     await LoggingAsync("PHASE_START", $"{phase} started, ends {end:HH:mm:ss} UTC");
                     await DelayAsync(end, token);
-                    await LoggingAsync("PHASE_COMPLETE", $"Phase - {phase} completed");
+                    await LoggingAsync("PHASE_COMPLETE", $"Phase - {phase} completed.");
 
                     if (phase == Phases.prepurge)
                     {
@@ -167,7 +167,7 @@ namespace BoilerController.Service
         internal async Task<string> ResetLockoutAsync()
         {
             await _semaphoreSlim.WaitAsync();
-            ResumeLog _previousLog = null;
+            ResumeLog? _previousLog = null;
             try
             {
                 string blockMessage = string.Empty;
@@ -248,13 +248,64 @@ namespace BoilerController.Service
             }
         }
 
-        internal void StopBoilerAsync()
+        internal async Task<string> StopBoilerAsync()
         {
+            await _semaphoreSlim.WaitAsync();
+            try
+            {
+                ResumeLog temp = null;
+                CancellationTokenSource? cts = null;
+                lock (_obj)
+                {
+                    if (_state == SystemState.Running)
+                    {
+                        TimeSpan remaining = TimeSpan.Zero;
+                        if (_phase == Phases.prepurge || _phase == Phases.ignition)
+                        {
+                            remaining = _TimeEndPhase - DateTime.UtcNow;
+                            if (remaining < TimeSpan.Zero)
+                            {
+                                remaining = TimeSpan.Zero;
+                            }
+                            temp = new ResumeLog(_phase, remaining);
+                            _resumeLog = temp;
+                            _state = SystemState.Stopped;
+                        }
+                    }
+                }
+                if (temp is null)
+                {
+                    return await BlockAsync("STOP_BLOCKED", "boiler is not running.");
+                }
+                string message;
+                if (temp.phase == Phases.operational)
+                {
+                    message = "Stopped in Operational phase. Start will resume from the operational phase itself.";
+                }
+                else
+                {
+                    message = $"Stopped in {temp.phase} with {temp.remainingTime} remaining. Start will resume from here.";
+                }
+                await LoggingAsync("STOP", message);
+                return message;
+            }
+            finally
+            {
+                _semaphoreSlim.Release();
+            }
         }
 
-        internal void ToggleRunInterlockAsync()
+        internal async Task ToggleRunInterlockAsync()
         {
+            await _semaphoreSlim.WaitAsync();
+            try
+            {
 
+            }
+            finally
+            {
+                _semaphoreSlim.Release();
+            }
         }
 
         internal List<string> ViewEventLogAsync()

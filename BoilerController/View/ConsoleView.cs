@@ -5,7 +5,10 @@ namespace BoilerController.View
     internal class ConsoleView
     {
         private BoilerService _service;
-
+        private readonly Queue<string> _events = new();
+        private readonly object _eventsLock = new();
+        private volatile bool _confirmingToggle;
+        private volatile string _message;
         public ConsoleView(BoilerService service)
         {
             this._service = service;
@@ -33,13 +36,13 @@ MAIN MENU
                         await _service.StartBoilerAsync();
                         continue;
                     case ConsoleKey.B:
-                        _service.StopBoilerAsync();
+                        await _service.StopBoilerAsync();
                         continue;
                     case ConsoleKey.C:
-                        _service.SimulateBoilerErrorAsync();
+                        await _service.SimulateBoilerErrorAsync();
                         continue;
                     case ConsoleKey.D:
-                        _service.ToggleRunInterlockAsync();
+                        await _service.ToggleRunInterlockAsync();
                         continue;
                     case ConsoleKey.E:
                         await _service.ResetLockoutAsync();
@@ -52,7 +55,7 @@ MAIN MENU
                         }
                         continue;
                     case ConsoleKey.G:
-                        _service.DisposeAsync();
+                        await _service.DisposeAsync();
                         Console.WriteLine("Exiting the application");
                         break;
                 }
