@@ -14,7 +14,9 @@ namespace BoilerController.Service
         private DateTime _TimeEndPhase;
         public event Action<string>? Notify;
         ResumeLog _resumeLog = new ResumeLog();
-        CancellationTokenSource cts = new CancellationTokenSource();
+        private CancellationTokenSource cts;
+        public static readonly TimeSpan Duration = TimeSpan.FromSeconds(10);
+        private Task _runningTask = Task.CompletedTask;
 
         public BoilerService(Logger logger)
         {
@@ -25,19 +27,140 @@ namespace BoilerController.Service
             return LoggingAsync("START", "Boilder controller initialized. [State: Lockout, Switch: Open]");
         }
 
-        internal async Task StartBoilerAsync()
+        internal async Task<string> StartBoilerAsync()
         {
+            TimeSpan remaining = Duration;
+            Phases phase = Phases.prepurge;
+            bool resumed = false;
+            DateTime end = default;
+            CancellationToken token = default;
             await _semaphoreSlim.WaitAsync();
             try
             {
-                while (true)
+                string block = string.Empty;
+                lock (_obj)
                 {
-
+                    if (_switch == Switch.opened)
+                    {
+                        block = "The switch is opened. For the boiler to start we need to change the switch to closed state.";
+                    }
+                    else if (_state == SystemState.Running)
+                    {
+                        block = "The boiler is already in running state.";
+                    }
+                    else if (_state == SystemState.Lockout)
+                    {
+                        block = "The boiler can't run if the system is in the lockout state.";
+                    }
+                    else if (_state == SystemState.Error)
+                    {
+                        block = "The user simulated error. Reset it to proceed.";
+                    }
+                    else
+                    {
+                        if (_state == SystemState.Stopped && _resumeLog is not null)
+                        {
+                            _phase = _resumeLog.phase;
+                            remaining = _resumeLog.remainingTime;
+                            resumed = true;
+                        }
+                        end = DateTime.UtcNow + remaining;
+                        _resumeLog = null;
+                        _state = SystemState.Running;
+                        _phase = phase;
+                        _TimeEndPhase = end;
+                        cts = new CancellationTokenSource();
+                        token = cts.Token;
+                    }
                 }
+                if (block is not null)
+                {
+                    await BlockAsync("START BLOCKED", block);
+                    return block;
+                }
+                string message = string.Empty;
+                if (resumed)
+                {
+                    message = $"Resumed from the {phase} with the remaining time of {remaining}.";
+                }
+                else
+                {
+                    message = "Started the sequence and begun from Phase 1 - Pre-Purge";
+                }
+                await LoggingAsync(resumed ? "RESUME" : "START", message);
+
+                _runningTask = RunAsync(phase, end, token);
+                return message;
             }
             finally
             {
                 _semaphoreSlim?.Release();
+            }
+        }
+
+        private async Task RunAsync(Phases phase, DateTime end, CancellationToken token)
+        {
+            try
+            {
+                while (phase != Phases.operational)
+                {
+                    lock (_obj)
+                    {
+                        if (_state != SystemState.Running)
+                        {
+                            return;
+                        }
+                        _phase = phase;
+                        _TimeEndPhase = end;
+                    }
+
+                    await LoggingAsync("PHASE_START", $"{phase} started, ends {end:HH:mm:ss} UTC");
+                    await DelayAsync(end, token);
+                    await LoggingAsync("PHASE_COMPLETE", $"Phase - {phase} completed");
+
+                    if (phase == Phases.prepurge)
+                    {
+                        phase = Phases.ignition;
+                    }
+                    else
+                    {
+                        phase = Phases.operational;
+                    }
+                    end = DateTime.UtcNow + Duration;
+                }
+
+                lock (_obj)
+                {
+                    if (_state != SystemState.Running)
+                    {
+                        return;
+                    }
+                    _phase = Phases.operational;
+                }
+
+                await LoggingAsync("OPERATIONAL", "Boiler is in operational phase with no timer.");
+                await Task.Delay(Timeout.Infinite, token);
+            }
+            catch (OperationCanceledException)
+            {
+                Console.WriteLine("The boiler is cancelled due to stopping or toggling the switch or error or shutdown");
+            }
+            catch (Exception ex)
+            {
+                lock (_obj)
+                {
+                    _state = SystemState.Error;
+                }
+                await LoggingAsync("ERROR", ex.Message);
+            }
+        }
+
+        private async Task DelayAsync(DateTime endTime, CancellationToken token)
+        {
+            TimeSpan remaining = endTime - DateTime.UtcNow;
+            if (remaining > TimeSpan.Zero)
+            {
+                await Task.Delay(remaining, token);
             }
         }
 
@@ -68,7 +191,7 @@ namespace BoilerController.Service
                 }
                 if (blockMessage is not null)
                 {
-                    return await BlockAsync("Reset blocked", blockMessage);
+                    return await BlockAsync("RESET BLOCKED", blockMessage);
                 }
                 string message = string.Empty;
                 if (_previousLog is null)
@@ -81,7 +204,6 @@ namespace BoilerController.Service
                     message = $"Reset is set to ready. The current flow is stopped in Phase:{_previousLog.phase}, Remaining Time: {_previousLog.remainingTime}.";
                     await LoggingAsync("RESET", message);
                 }
-                ;
                 return message;
             }
             finally

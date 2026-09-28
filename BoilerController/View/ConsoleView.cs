@@ -42,7 +42,7 @@ MAIN MENU
                         _service.ToggleRunInterlockAsync();
                         continue;
                     case ConsoleKey.E:
-                        _service.ResetLockoutAsync();
+                        await _service.ResetLockoutAsync();
                         continue;
                     case ConsoleKey.F:
                         List<string> logs = _service.ViewEventLogAsync();

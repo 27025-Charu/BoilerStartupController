@@ -6,3 +6,7 @@ TimeStamp,Event,Event Data
 28-43-2026 08:43:45,INFO,Boilder controller initialized. [State: Lockout, Switch: Open]
 28-45-2026 08:45:34,INFO,Boilder controller initialized. [State: Lockout, Switch: Open]
 28-09-2026 08:47:28,INFO,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 10:08:16,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 10:08:18,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
+28-09-2026 10:09:37,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 10:09:39,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
