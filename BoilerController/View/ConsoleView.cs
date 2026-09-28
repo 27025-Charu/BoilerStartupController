@@ -77,14 +77,17 @@ MAIN MENU
 [F] VIEW EVENT LOG
 [G] EXIT APPLICATION");
             WriteLine("-------------------------------------------", width);
-            WriteLine($"Current message: {_message}", width);
+            WriteLine($"> {_message}", width);
             WriteLine("-------------------------------------------", width);
             Console.WriteLine("EVENTS:");
             string[] events;
-            lock (_eventsLock) { events = _queue.ToArray(); }
+            lock (_eventsLock)
+            {
+                events = _queue.ToArray();
+            }
             for (int i = 0; i < MAXCOUNT; i++)
             {
-                WriteLine(events[i], width);
+                WriteLine(i < events.Length ? events[i] : "", width);
             }
         }
 

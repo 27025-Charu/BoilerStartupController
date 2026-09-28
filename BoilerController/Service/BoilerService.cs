@@ -407,7 +407,7 @@ namespace BoilerController.Service
         private async Task LoggingAsync(string evtFormat, string message)
         {
             await logger.WriteAsync(evtFormat, message);
-            Notify?.Invoke($"{DateTime.UtcNow:HH:mm:ss} - {evtFormat,-15} - {message}");
+            Notify?.Invoke($"{DateTime.UtcNow:HH:mm:ss} - {evtFormat} - {message}");
         }
     }
 }
