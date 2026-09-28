@@ -8,7 +8,7 @@
         public Logger(string fileName)
         {
             this._filePath = fileName;
-            if (!File.Exists(fileName))
+            if (!File.Exists(fileName) || new FileInfo(_filePath).Length == 0)
             {
                 File.WriteAllText(this._filePath, string.Join(",", Header) + Environment.NewLine);
             }

@@ -10,3 +10,15 @@ TimeStamp,Event,Event Data
 28-09-2026 10:08:18,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
 28-09-2026 10:09:37,START,Boilder controller initialized. [State: Lockout, Switch: Open]
 28-09-2026 10:09:39,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
+28-09-2026 11:16:29,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 11:16:30,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
+28-09-2026 11:16:34,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
+28-09-2026 11:16:37,STOP_BLOCKED,boiler is not running.
+28-09-2026 11:16:38,ERROR BLOCKED,Errors can only be raised in the operational state.
+28-09-2026 11:16:39,RESET BLOCKED,Switch needs to be closed. Currently it is opened.
+28-09-2026 11:17:06,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 11:24:12,START,Boilder controller initialized. [State: Lockout, Switch: Open]
+28-09-2026 11:24:43,START BLOCKED,The switch is opened. For the boiler to start we need to change the switch to closed state.
+28-09-2026 11:25:00,ERROR BLOCKED,Errors can only be raised in the operational state.
+28-09-2026 11:25:07,RESET BLOCKED,Switch needs to be closed. Currently it is opened.
+28-09-2026 11:25:09,RESET BLOCKED,Switch needs to be closed. Currently it is opened.
