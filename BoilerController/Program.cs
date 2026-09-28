@@ -6,7 +6,7 @@ namespace BoilerController
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             string fileName = " BoilerLog.csv";
             Logger logger = new Logger(fileName);
@@ -15,7 +15,8 @@ namespace BoilerController
             Console.WriteLine(@"====================================
 WELCOME TO BOILER STARTUP CONTROLLER
 ====================================");
-            view.Execute();
+            service.RunAsync();
+            view.ExecuteAsync();
         }
     }
 }

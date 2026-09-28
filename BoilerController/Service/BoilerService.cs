@@ -16,12 +16,17 @@ namespace BoilerController.Service
             throw new NotImplementedException();
         }
 
-        internal void ResetLockout()
+        internal void ResetLockoutAsync()
         {
 
         }
 
-        internal void SimulateBoilerError()
+        internal void RunAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void SimulateBoilerErrorAsync()
         {
 
         }
@@ -41,7 +46,12 @@ namespace BoilerController.Service
             throw new NotImplementedException();
         }
 
-        internal List<string> ViewEventLog()
+        internal void ToggleRunInterlockAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal List<string> ViewEventLogAsync()
         {
             return logger.ReadAll();
         }

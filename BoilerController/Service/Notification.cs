@@ -2,8 +2,8 @@
 {
     internal class Notification
     {
-        public Action<string> Notify;
-        void InvokeNotification(string message)
+        public event Action<string>? Notify;
+        public void InvokeNotification(string message)
         {
             Notify?.Invoke(message);
         }

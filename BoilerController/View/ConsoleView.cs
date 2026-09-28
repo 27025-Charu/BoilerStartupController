@@ -11,7 +11,7 @@ namespace BoilerController.View
             this._service = service;
         }
 
-        internal void Execute()
+        internal void ExecuteAsync()
         {
             Console.WriteLine($@"=========================================
 MAIN MENU
@@ -36,16 +36,16 @@ MAIN MENU
                         _service.StopBoilerAsync();
                         continue;
                     case ConsoleKey.C:
-                        _service.SimulateBoilerError();
+                        _service.SimulateBoilerErrorAsync();
                         continue;
                     case ConsoleKey.D:
-                        _service.ToggleRunInterlock();
+                        _service.ToggleRunInterlockAsync();
                         continue;
                     case ConsoleKey.E:
-                        _service.ResetLockout();
+                        _service.ResetLockoutAsync();
                         continue;
                     case ConsoleKey.F:
-                        List<string> logs = _service.ViewEventLog();
+                        List<string> logs = _service.ViewEventLogAsync();
                         foreach (var log in logs)
                         {
                             Console.WriteLine(log);
