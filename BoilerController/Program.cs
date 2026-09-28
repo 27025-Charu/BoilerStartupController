@@ -15,9 +15,6 @@ namespace BoilerController
             Logger logger = new Logger(fileName);
             BoilerService service = new BoilerService(logger);
             ConsoleView view = new ConsoleView(service);
-            Console.WriteLine(@"====================================
-WELCOME TO BOILER STARTUP CONTROLLER
-====================================");
             await service.RunAsync();
             await view.ExecuteAsync();
         }

@@ -488,5 +488,30 @@ namespace BoilerController.Service
             await logger.WriteAsync(evtFormat, message);
             Notify?.Invoke($"{DateTime.UtcNow:HH:mm:ss} - {evtFormat} - {message}");
         }
+
+        public BoilerModel GetBoilerModel()
+        {
+            lock (_obj)
+            {
+                TimeSpan? remaining = null;
+                if (_state == SystemState.Running && (_phase == Phases.ignition || _phase == Phases.prepurge))
+                {
+                    TimeSpan left = _TimeEndPhase - DateTime.UtcNow;
+                    if (left > TimeSpan.Zero)
+                    {
+                        remaining = left;
+                    }
+                    else
+                    {
+                        remaining = TimeSpan.Zero;
+                    }
+                }
+                else if (_state == SystemState.Stopped && (_resumeLog.phase == Phases.ignition || _resumeLog.phase == Phases.prepurge))
+                {
+                    remaining = _resumeLog.remainingTime;
+                }
+                return new BoilerModel(_state, _switch, _phase, remaining);
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BoilerController.Service;
+﻿using BoilerController.Model;
+using BoilerController.Service;
 
 namespace BoilerController.View
 {
@@ -7,7 +8,7 @@ namespace BoilerController.View
     /// </summary>
     internal class ConsoleView
     {
-        private const int MAXCOUNT = 10;
+        private const int MAXCOUNT = 5;
         private BoilerService _service;
         private readonly Queue<string> _queue = new();
         private readonly object _eventsLock = new();
@@ -114,6 +115,14 @@ MAIN MENU
             {
                 WriteLine(i < events.Length ? events[i] : "", width);
             }
+            WriteLine("-------------------------------------------", width);
+            BoilerModel model = _service.GetBoilerModel();
+            Console.WriteLine($@"DASHBOARD
+Phase         : {model.phase}
+System state  : {model.state}
+Switch state  : {model.switchState}
+Remaining time: {model.Remaining}
+");
         }
 
         /// <summary>
