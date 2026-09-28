@@ -8,7 +8,7 @@ namespace BoilerController.View
         private BoilerService _service;
         private readonly Queue<string> _queue = new();
         private readonly object _eventsLock = new();
-        private volatile bool _confirmingToggle;
+        private volatile bool _confirmMessage;
         private volatile string _message = string.Empty;
         public ConsoleView(BoilerService service)
         {
@@ -77,20 +77,28 @@ MAIN MENU
 [F] VIEW EVENT LOG
 [G] EXIT APPLICATION");
             WriteLine("-------------------------------------------", width);
-            WriteLine($" > {_message}", width);
+            WriteLine($"Current message: {_message}", width);
             WriteLine("-------------------------------------------", width);
-            Console.WriteLine("Events:");
+            Console.WriteLine("EVENTS:");
             string[] events;
             lock (_eventsLock) { events = _queue.ToArray(); }
             for (int i = 0; i < MAXCOUNT; i++)
             {
-                WriteLine(i < events.Length ? " " + events[i] : "", width);
+                WriteLine(events[i], width);
             }
         }
 
         private void WriteLine(string text, int width, ConsoleColor? color = null)
         {
-            string padded = text.Length > width ? text[..width] : text.PadRight(width);
+            string padded;
+            if (text.Length > width)
+            {
+                padded = text[..width];
+            }
+            else
+            {
+                padded = text.PadRight(width);
+            }
             Console.WriteLine(padded);
         }
 
@@ -98,16 +106,10 @@ MAIN MENU
         {
             while (true)
             {
-                if (!Console.KeyAvailable)
-                {
-                    await Task.Delay(50);
-                    continue;
-                }
-
                 ConsoleKey key = Console.ReadKey(intercept: true).Key;
-                if (_confirmingToggle)
+                if (_confirmMessage)
                 {
-                    _confirmingToggle = false;
+                    _confirmMessage = false;
                     if (key == ConsoleKey.Y)
                     {
                         await _service.ToggleRunInterlockAsync();
@@ -130,14 +132,15 @@ MAIN MENU
                         _message = await _service.SimulateBoilerErrorAsync();
                         break;
                     case ConsoleKey.D:
-                        //if (_service.IsRunning())
-                        //{
-
-                        //}
-                        //else
-                        //{
-                        //    _message = await _service.ToggleRunInterlockAsync();
-                        //}
+                        if (_service.IsRunning)
+                        {
+                            _confirmMessage = true;
+                            _message = "Toggling may abort the current started boiler.Are you toggling for sure? [Y/N]";
+                        }
+                        else
+                        {
+                            _message = await _service.ToggleRunInterlockAsync();
+                        }
                         break;
                     case ConsoleKey.E:
                         _message = await _service.ResetLockoutAsync();

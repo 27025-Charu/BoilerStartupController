@@ -73,7 +73,7 @@ namespace BoilerController.Service
                         token = cts.Token;
                     }
                 }
-                if (block is not null)
+                if (block != string.Empty)
                 {
                     await BlockAsync("START BLOCKED", block);
                     return block;
@@ -189,7 +189,7 @@ namespace BoilerController.Service
                         _state = SystemState.Ready;
                     }
                 }
-                if (blockMessage is not null)
+                if (blockMessage != string.Empty)
                 {
                     return await BlockAsync("RESET BLOCKED", blockMessage);
                 }
@@ -223,11 +223,13 @@ namespace BoilerController.Service
             await _semaphoreSlim.WaitAsync();
             try
             {
+                CancellationTokenSource? _cts = null;
                 bool flag = false;
                 lock (_obj)
                 {
                     if (_phase == Phases.operational && _state == SystemState.Running)
                     {
+                        _cts = cts;
                         flag = true;
                         _resumeLog = null;
                         _state = SystemState.Error; //Just resetting the state alone. The phase will help to identify in which phase the error occured. So, didn't change that.
@@ -237,7 +239,7 @@ namespace BoilerController.Service
                 {
                     return await BlockAsync("ERROR BLOCKED", "Errors can only be raised in the operational state.");
                 }
-
+                await CancelTokenSource(cts);
                 const string message = "Error is simulated in operational state. To proceed go forward with the reset.";
                 await LoggingAsync("ERROR RAISED", message);
                 return message;
@@ -295,12 +297,61 @@ namespace BoilerController.Service
             }
         }
 
-        internal async Task ToggleRunInterlockAsync()
+        internal async Task<string> ToggleRunInterlockAsync()
         {
             await _semaphoreSlim.WaitAsync();
             try
             {
-
+                bool open, wasRunning = false;
+                Phases phase = Phases.none;
+                CancellationTokenSource? _cts = null;
+                lock (_obj)
+                {
+                    if (_switch == Switch.closed)
+                    {
+                        _switch = Switch.opened;
+                        open = true;
+                        if (_state == SystemState.Running)
+                        {
+                            wasRunning = true;
+                        }
+                        phase = _phase;
+                        if (wasRunning)
+                        {
+                            _cts = cts;
+                            _resumeLog = null;
+                        }
+                        _state = SystemState.Lockout;
+                        _phase = Phases.none;
+                    }
+                    else
+                    {
+                        _switch = Switch.closed;
+                        open = false;
+                    }
+                }
+                if (wasRunning)
+                {
+                    await CancelTokenSource(cts);
+                }
+                string message;
+                if (!open)
+                {
+                    message = "Switch is in closed state. Boiler is in lockout, reset to Ready state.";
+                }
+                else
+                {
+                    if (wasRunning)
+                    {
+                        message = $"Switch is opened. The phase when the toggle happened was {phase}. Close the switch and reset to ready state.";
+                    }
+                    else
+                    {
+                        message = $"Switch is opened. The boiler wasn't running. Close the switch and reset to ready state.";
+                    }
+                }
+                await LoggingAsync("TOGGLE SWITCH", message);
+                return message;
             }
             finally
             {
@@ -308,9 +359,29 @@ namespace BoilerController.Service
             }
         }
 
+        private async Task CancelTokenSource(CancellationTokenSource cts)
+        {
+            if (cts == null)
+            {
+                return;
+            }
+            cts.Cancel();
+        }
+
         internal List<string> ViewEventLogAsync()
         {
             return logger.ReadAll();
+        }
+
+        public bool IsRunning
+        {
+            get
+            {
+                lock (_obj)
+                {
+                    return _state == SystemState.Running;
+                }
+            }
         }
 
         internal async Task DisposeAsync()
