@@ -46,8 +46,7 @@
               "RelativeToolTip": "Service\\Notification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:55:04.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-28T06:55:04.619Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "Service\\BoilerService.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAcwC0AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:28:09.239Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-28T06:28:09.239Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "View\\ConsoleView.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAYwC8AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:27:37.182Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-28T06:27:37.182Z"
             },
             {
               "$type": "Document",
@@ -83,7 +80,7 @@
               "RelativeDocumentMoniker": "Repository\\Logger.cs",
               "ToolTip": "C:\\Users\\charu.subbian\\Viscom_ws\\Training\\Assessment-2\\BoilerController\\Repository\\Logger.cs",
               "RelativeToolTip": "Repository\\Logger.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAcwBMAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAiwAcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-28T06:27:19.442Z",
               "EditorCaption": ""
@@ -98,8 +95,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-28T06:17:35.631Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-28T06:17:35.631Z"
             }
           ]
         }
